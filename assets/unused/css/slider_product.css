@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+            #wrapper1 .caroufredsel_wrapper { top:58px !important;}
+			.wrapper {
+				width: 463px;
+			}
+			#thumbs a:first-child{ margin-left:0px; height:55px !important;}
+			#wrapper1 { width:463px; height:436px; border:1px solid #cccaca; }
+			#carousel-wrapper {
+				padding-bottom: 10px;
+				position: relative;
+			}
+			#carousel, #thumbs {
+				overflow: hidden;
+			}
+			#carousel-wrapper .caroufredsel_wrapper {
+				border:1px solid #cccaca !important;
+			}
+
+			#carousel span, #carousel img,
+			#thumbs a, #thumbs img  {
+				display: block;
+				float: left;
+			}
+			#carousel span, #carousel a,
+			#thumbs span, #thumbs a {
+				position: relative;
+			}
+			#carousel img,
+			#thumbs img {
+				border: none;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#carousel img.glare,
+			#thumbs img.glare {
+				width: 102%;
+				height: auto;
+			}
+
+			#carousel span {
+				width: 554px;
+				height: 313px;
+			}
+
+			#thumbs-wrapper {
+				padding: 20px 0px !important;
+				position: relative;
+			}
+			.selected { width:84px !important; height:55.44px !important;}
+			#thumbs a {
+				border: 1px solid #cccaca;
+				width: 86px !important;
+				height: 79px;
+				margin: 0 3px;
+				overflow: hidden;
+				
+				
+				-webkit-transition: border-color .5s;
+				-moz-transition: border-color .5s;
+				-ms-transition: border-color .5s;
+				transition: border-color .5s;
+			}
+			#thumbs a:nth-child(5){ margin-right:0px !important;}
+			#thumbs a:hover, #thumbs a.selected {
+			 border-color:none !important;
+			}
+			
+			#wrapper img#shadow {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+			}
+
+			#prev, #next {
+				background-image: url(../images/slide_arrow.png);
+				background-color: #cccaca;
+				background-repeat:no-repeat;
+
+				display: block;
+				
+				height:57px;
+				margin-top: -28px;
+				position: absolute;
+				opacity:0.8;
+				top: 49%;
+			}
+			#prev {
+				
+				left: 0px;
+				width:10px; 
+				background-position:5px 24px;
+			}
+			#next {
+				
+				right:0px;
+				width:10px; 
+				background-position:-5px 24px;
+				
+				/*****right: 10px; ***/
+			}			
+			#prev:hover { 
+				background-position:5px 24px;				
+			}
+			#next:hover {
+				background-position:-5px 24px;			
+			}
+			#prev.disabled, #next.disabled {
+				/*display: none !important;*/
+			}
+			
+			#donate-spacer {
+				height: 100%;
+			}
+			#donate {
+				border-top: 1px solid #999;
+				width: 750px;
+				padding: 50px 75px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#donate p, #donate form {
+				margin: 0;
+				float: left;
+			}
+			#donate p {
+				width: 650px;
+			}
+			#donate form {
+				width: 100px;
+			}
