@@ -47,7 +47,7 @@
                             <td><?= $participant->propagation_status; ?></td>
                             <td><?= $participant->majlis_amomi_status; ?></td>
                             <!--<td><?//= $participant->administrative_status; ?></td>-->
-                            <td><?= $participant->city_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->halqa_name; ?></td>
+                            <td><?= $participant->zone_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->city_name; ?></td>
                             <td>
                                 <div class="btn-group" data-toggle="btn-toggle" >
                                     <button type="button" class="btn btn-default btn-leave btn-sm<?= (!$on_leave) ? ' active' : ''; ?>" onclick="update_registration_leave(<?= $registration_id; ?>, 1)" <?= ($on_leave) ? ' disabled' : ''; ?>>
