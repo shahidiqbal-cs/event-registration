@@ -1,106 +1,14 @@
 <?php if ($summary): ?>
 <div class="nav-tabs-custom" id="print_section">
         <ul class="nav nav-tabs hidden-print">
-            <?php foreach ($summary as $key => $summary_by_type): ?>
-                <li class="<?= ($key == 0) ? 'active' : ''; ?>"><a href="#tab_<?= $key; ?>" data-toggle="tab"><?= $summary_by_type['event_type_heading']; ?></a></li>
-            <?php endforeach; ?>
-            <li class=""><a href="#tab_overall_summary_zone" data-toggle="tab"><?= lang('summary') . ' ' . lang('zone'); ?></a></li>
+            <li class="active"><a href="#tab_overall_summary_zone" data-toggle="tab"><?= lang('summary') . ' ' . lang('zone'); ?></a></li>
             <li class=""><a href="#tab_overall_summary_zone_city" data-toggle="tab"><?= lang('summary') . ' ' . lang('zone') . ' + ' . lang('city'); ?></a></li>
             <li class=""><a href="#tab_overall_summary_city" data-toggle="tab"><?= lang('summary') . ' ' . lang('city'); ?></a></li>
             <li class="pull-right"><button class="btn btn-default" id="" onclick="window.print()"><i class="fa fa-print"></i> Print</button></li>
         </ul>
         <div class="tab-content">
-            <?php foreach ($summary as $key => $summary_by_type): ?>
-                <div class="tab-pane clearfix<?= ($key == 0) ? ' active' : ''; ?>" id="tab_<?= $key; ?>">
-                    <div class="col-md-12 text-center">
-                        <?= $event['event_header'] ?>
-                        <p><?= date('F d, Y', strtotime($event['event_date'])); ?>,<?= $event['event_location'] ?></p>
-                        <p><?= lang('summary') . ' ' . lang('report') . ' ' . lang('for'); ?> : <?= $summary_by_type['event_type_heading']; ?></p>
-                    </div>
-                    <table class="table table-bordered table-striped group-table text-center">
-                        <thead>
-                            <tr>
-                                <th><?= lang('percentage'); ?> <?= lang('attendance'); ?></th>
-                                <th><?= lang('total'); ?></th>
-                                <th><?= lang('present'); ?></th>
-                                <th><?= lang('leave'); ?></th>
-                                <th><?= lang('absent'); ?></th>
-                                <th><?= lang('halqa'); ?></th>
-                                <th><?= lang('city'); ?></th>
-                                <th><?= lang('zone'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($summary_by_type['zones'] as $zone_summary):
-                                $marge_column_zone = true;
-                                foreach ($zone_summary['cities'] as $city_summary):
-                                    $marge_column = true;
-                                    foreach ($city_summary['halqas'] as $halqa_summary):
-                                        ?>
-                                        <tr>
-                                            <td><?= ($halqa_summary['total']) ? round(((($halqa_summary['present']) / ($halqa_summary['total'])) * 100), 2) : '0'; ?>%</td>
-                                            <td><?= $halqa_summary['total']; ?></td>
-                                            <td><?= $halqa_summary['present']; ?></td>
-                                            <td><?= $halqa_summary['full_leave']; ?></td>
-                                            <td><?= $halqa_summary['absent']; ?></td>
-                                            <td><?= $halqa_summary['details']->halqa_name; ?></td>
-                                            <?php if ($marge_column): ?>
-                                                <th rowspan="<?= ($city_summary['no_of_halqa'] + 1); ?>"><?= ($city_summary['details']->city_name != 'direct') ? $city_summary['details']->city_name : ''; ?></th>
-                                                <?php
-                                                $marge_column = false;
-                                            endif;
-                                            ?>
-                                            <?php if ($marge_column_zone): ?>
-                                                <th rowspan="<?= ($zone_summary['no_of_halqa'] + $zone_summary['no_of_city'] + 1); ?>"><?= ($zone_summary['details']->zone_name != 'direct') ? $zone_summary['details']->zone_name : '(' . lang('region') . ')'; ?></th>
-                                                <?php
-                                                $marge_column_zone = false;
-                                            endif;
-                                            ?>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                    <tr class="row-seprater">
-                                        <td><?= ($city_summary['total']) ? round(((($city_summary['present'] + $city_summary['half_leave']) / ($city_summary['total'])) * 100), 2) : '0'; ?>%</td>
-                                        <td><?= $city_summary['total']; ?></td>
-                                        <td><?= $city_summary['present']; ?></td>
-                                        <td><?= $city_summary['full_leave']; ?></td>
-                                        <td><?= $city_summary['absent']; ?></td>
-                                        <td><?= lang('total'); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                <tr  class="row-seprater2">
-                                    <td><?= ($zone_summary['total']) ? round(((($zone_summary['present'] + $zone_summary['half_leave']) / ($zone_summary['total'])) * 100), 2) : '0'; ?>%</td>
-                                    <td><?= $zone_summary['total']; ?></td>
-                                    <td><?= $zone_summary['present']; ?></td>
-                                    <td><?= $zone_summary['full_leave']; ?></td>
-                                    <td><?= $zone_summary['absent']; ?></td>
-                                    <td colspan="2"><?= lang('total'); ?></td>
-                                </tr>    
-                            <?php endforeach; ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>%</th>
-                                <th><?= $summary_by_type['total']; ?></th>
-                                <th><?= $summary_by_type['present']; ?></th>
-                                <th><?= $summary_by_type['full_leave']; ?></th>
-                                <th><?= $summary_by_type['absent']; ?></th>
-                                <th colspan="3"><?= lang('total'); ?></th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <div class="col-md-12">
-                        <div class="col-md-6 pull-right text-center">
-                            <span>____________________</span> :<?= lang('signature') . ' ' . lang('chairman'); ?>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <p><u><?= date('d-M-Y g:i a'); ?></u> :<?= lang('time'); ?></p>
-                        </div>
-                    </div>
-                </div><!-- /.tab-pane -->
-            <?php endforeach; ?>
             <!--OverAll summary-->
-            <div class="tab-pane clearfix" id="tab_overall_summary_zone">
+            <div class="tab-pane clearfix active" id="tab_overall_summary_zone">
                 <div class="col-md-12 text-center">
                     <?= $event['event_header'] ?>
                     <p><?= date('F d, Y', strtotime($event['event_date'])); ?>,<?= $event['event_location'] ?></p>

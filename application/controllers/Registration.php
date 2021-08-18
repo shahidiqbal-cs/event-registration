@@ -345,7 +345,6 @@ class Registration extends CI_Controller
         $absent_in_all = 0;
         $present_in_all = 0;
         $total_in_all = 0;
-        $no_of_halqa = 0;
         $no_of_city = 0;
         foreach ($zones as $id):
             $ids = array();
@@ -362,7 +361,6 @@ class Registration extends CI_Controller
             $object_summary = array(
                 'details' => $this->organization_model->get_zone(array('zone_id' => $id)),
                 'cities' => $child_summary['cities'],
-                'no_of_halqa' => $child_summary['no_of_halqa'],
                 'no_of_city' => $child_summary['no_of_city'],
                 'half_leave' => $half_leave,
                 'full_leave' => $full_leave,
@@ -372,7 +370,6 @@ class Registration extends CI_Controller
             );
             array_push($summary, $object_summary);
             $no_of_city += $child_summary['no_of_city'];
-            $no_of_halqa += $child_summary['no_of_halqa'];
             $half_leave_in_all += $half_leave;
             $full_leave_in_all += $full_leave;
             $absent_in_all += $absent;
@@ -382,7 +379,6 @@ class Registration extends CI_Controller
         return array(
             'zones' => $summary,
             'no_of_city' => $no_of_city,
-            'no_of_halqa' => $no_of_halqa,
             'half_leave' => $half_leave_in_all,
             'full_leave' => $full_leave_in_all,
             'absent' => $absent_in_all,
@@ -399,23 +395,39 @@ class Registration extends CI_Controller
         $absent_in_all = 0;
         $present_in_all = 0;
         $total_in_all = 0;
-        $no_of_halqa = 0;
+        $query['registration.event_id'] = $this->event_id;
         foreach ($cities as $city):
-            $halqa_ids = array();
-            $halqas = $this->organization_model->get_halqa_against_city($city);
-            foreach ($halqas as $halqa):
-                $halqa_ids[] = $halqa->halqa_id;
-            endforeach;
-            $halqa_summary = $this->summary_halqa_part($halqa_ids, $query);
-            $half_leave = $halqa_summary['half_leave'];
-            $full_leave = $halqa_summary['full_leave'];
-            $absent = $halqa_summary['absent'];
-            $present = $halqa_summary['present'];
-            $total = $halqa_summary['total'];
+            $query['city.city_id'] = $city;
+            //
+            //Prepay query to get on participant those are on half leave
+            $query['registration.on_leave'] = 1; //On Leave
+            $query['registration.registration_status'] = 1;  //Present
+            $half_leave = $this->registration_model->count_registration($query);
+            //End half leave query
+            //
+            //
+            //Prepay query to get on participant those are on full leave
+            $query['registration.registration_status'] = 0;  //Absent (On leave will be inherit from previous)
+            $full_leave = $this->registration_model->count_registration($query);
+            //End full leave query
+            //
+            //
+            //Prepay query to get on participant those are absent
+            $query['registration.on_leave'] = 0;  //not on leave (Absent will be inherit from previous)
+            $absent = $this->registration_model->count_registration($query);
+            //End absent query
+            //
+            //
+            //Prepay query to get on participant those are present
+            $query['registration.registration_status'] = 1;  //Present (Not on leave will be inherit from previous)
+            $present = $this->registration_model->count_registration($query);
+            //End present query
+            //
+
+            $total = $present + $absent + $half_leave + $full_leave; //Number of total participant
+            //Summary againset single city array
             $object_summary = array(
                 'details' => $this->organization_model->get_city(array('city_id' => $city)),
-                'halqas' => $halqa_summary['halqas'],
-                'no_of_halqa' => $halqa_summary['no_of_halqa'],
                 'half_leave' => $half_leave,
                 'full_leave' => $full_leave,
                 'absent' => $absent,
@@ -423,7 +435,6 @@ class Registration extends CI_Controller
                 'total' => $total
             );
             array_push($summary, $object_summary);
-            $no_of_halqa += $halqa_summary['no_of_halqa'];
             $half_leave_in_all += $half_leave;
             $full_leave_in_all += $full_leave;
             $absent_in_all += $absent;
@@ -432,7 +443,6 @@ class Registration extends CI_Controller
         endforeach;
         return array(
             'cities' => $summary,
-            'no_of_halqa' => $no_of_halqa,
             'no_of_city' => count($cities),
             'half_leave' => $half_leave_in_all,
             'full_leave' => $full_leave_in_all,
@@ -519,9 +529,7 @@ class Registration extends CI_Controller
         foreach ($involvements as $element):
             $common_query_condition['participant.' . $element['column_prefix'] . '_id'] = $element['id']; //Query building to specify the ideology_id(Sirkel,forum,jaizapas..etc)
 
-            if ($participants_organization == 'halqa'):
-                $sub_summary = $this->summary_halqa_part($organization_ids, $common_query_condition);
-            elseif ($participants_organization == 'city'):
+            if ($participants_organization == 'city'):
                 $sub_summary = $this->summary_city_part($organization_ids, $common_query_condition);
             elseif ($participants_organization == 'zone'):
                 $sub_summary = $this->summary_zone_part($organization_ids, $common_query_condition);
@@ -584,7 +592,6 @@ class Registration extends CI_Controller
             lang('ideology_status'),
             lang('zone'),
             lang('city'),
-            lang('halqa'),
             lang('attendance'),
             lang('arrival_time')
         );
@@ -601,7 +608,6 @@ class Registration extends CI_Controller
                 $registration->ideology_status,
                 $registration->zone_name,
                 $registration->city_name,
-                $registration->halqa_name,
                 $registration_status,
                 $arrivel_time
             );
