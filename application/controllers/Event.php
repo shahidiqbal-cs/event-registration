@@ -73,12 +73,6 @@ class Event extends CI_Controller {
             if ($organizer_city):
                 $event->organizer_name = $organizer_city->city_name;
             endif;
-        elseif ($event->organizer == 'halqa'):
-            $event->organizer_urdu = lang('halqa');
-            $organizer_halqa = $this->organization_model->get_halqa(array('halqa_id' => $event->organizer_id));
-            if ($organizer_halqa):
-                $event->organizer_name = $organizer_halqa->halqa_name;
-            endif;
         else:
             $event->organizer = 'Unknown';
             $event->organizer_name = 'Unknown';
@@ -108,9 +102,6 @@ class Event extends CI_Controller {
             $data->list_of_organizer = $this->organization_model->get_zones();
         elseif ($data->organizer == 'city'):
             $data->list_of_organizer = $this->organization_model->get_cities();
-        elseif ($data->organizer == 'halqa'):
-            $data->list_of_organizer = $this->organization_model->get_halqas();
-        else:
             $data->list_of_organizer = false;
         endif;
 
@@ -126,23 +117,7 @@ class Event extends CI_Controller {
                     endforeach;
                 endif;
             endforeach;
-            if (!empty($data->cutom_city) && ($data->halqa_option == 'custom')):
-                $data->halqas = array();
-                foreach ($data->cutom_city as $city):
-                    $cutome_halqas_in_city = $this->organization_model->get_halqa_against_city($city);
-                    if (empty($data->halqas)):
-                        $data->halqas = $cutome_halqas_in_city;
-                    else:
-                        foreach ($cutome_halqas_in_city as $cutome_halqa_in_city):
-                            array_push($data->halqas, $cutome_halqa_in_city);
-                        endforeach;
-                    endif;
-                endforeach;
-            else:
-                $data->halqas = false;
-            endif;
         else:
-            $data->halqas = false;
             $data->cities = false;
         endif;
     }
@@ -154,8 +129,6 @@ class Event extends CI_Controller {
             return lang('zone');
         elseif ($english_name == 'city'):
             return lang('city');
-        elseif ($english_name == 'halqa'):
-            return lang('halqa');
         endif;
     }
 
@@ -172,10 +145,6 @@ class Event extends CI_Controller {
         elseif ($organization == 'city'):
             foreach ($ids as $id):
                 $organization_data[$id] = $this->organization_model->get_city(array('city_id' => $id))->city_name;
-            endforeach;
-        elseif ($organization == 'halqa'):
-            foreach ($ids as $id):
-                $organization_data[$id] = $this->organization_model->get_halqa(array('halqa_id' => $id))->halqa_name;
             endforeach;
         else:
             return false;
@@ -255,10 +224,8 @@ class Event extends CI_Controller {
             $data->selected_intazamia = false;
             $data->zone_option = 'all';
             $data->city_option = 'all';
-            $data->halqa_option = 'all';
             $data->cutom_zone = array();
             $data->cutom_city = array();
-            $data->cutom_halqa = array();
             $this->initialize_event($data);
             ///////////////// Event data strings /////////////////
             $this->template($data);
@@ -352,12 +319,9 @@ class Event extends CI_Controller {
         elseif (($this->input->post('zone') == 'custom') && ($this->input->post('city') == 'all')):
             $eventData['participants_organization'] = 'zone';
             $organization_ids = $this->input->post('custom_zone');
-        elseif (($this->input->post('city') == 'custom') && ($this->input->post('halqa') == 'all')):
+        elseif ($this->input->post('city') == 'custom'):
             $eventData['participants_organization'] = 'city';
             $organization_ids = $this->input->post('custom_city');
-        elseif ($this->input->post('halqa') == 'custom'):
-            $eventData['participants_organization'] = 'halqa';
-            $organization_ids = $this->input->post('custom_halqa');
         endif;
         $eventData['organization_ids'] = serialize($organization_ids);
         return $eventData;
@@ -394,10 +358,8 @@ class Event extends CI_Controller {
             $data->organization_ids = unserialize($event->organization_ids);
             $data->zone_option = 'all';
             $data->city_option = 'all';
-            $data->halqa_option = 'all';
             $data->cutom_zone = array();
             $data->cutom_city = array();
-            $data->cutom_halqa = array();
             $this->get_event_organizer($event);
             $data->the_event = (array) $event;
             $organization_ids = unserialize($event->organization_ids);
@@ -423,27 +385,6 @@ class Event extends CI_Controller {
                     endif;
                 endforeach;
                 $data->cutom_zone = $cutom_zone_ids;
-            elseif ($data->participants_organization == 'halqa'):
-                $data->zone_option = 'custom';
-                $data->city_option = 'custom';
-                $data->cutom_halqa = $organization_ids;
-                $halqas = $this->organization_model->get_halqas();
-                $cutom_zone_ids = array();
-                $cutom_city_ids = array();
-                foreach ($halqas as $halqa):
-                    if (!in_array($halqa->halqa_id, $organization_ids)):
-                        $data->halqa_option = 'custom';
-                    else:
-                        if (!in_array($halqa->city_id, $cutom_city_ids)):
-                            $cutom_city_ids[] = $halqa->city_id;
-                        endif;
-                        if (!in_array($halqa->zone_id, $cutom_zone_ids)):
-                            $cutom_zone_ids[] = $halqa->zone_id;
-                        endif;
-                    endif;
-                endforeach;
-                $data->cutom_zone = $cutom_zone_ids;
-                $data->cutom_city = $cutom_city_ids;
             endif;
             $this->initialize_event($data);
         else:

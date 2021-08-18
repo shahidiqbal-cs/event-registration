@@ -84,14 +84,6 @@
                                         <i class="fa fa-ellipsis-v"></i>
                                         <i class="fa fa-ellipsis-v"></i>
                                     </span>
-                                    <input type="checkbox" class="minimal" name="exportcolumns[]" value="halqa.halqa_name" checked />
-                                    <label><?= lang('halqa'); ?></label>
-                                </div>
-                                <div class="col-sm-2 pull-right">
-                                    <span class="handle">
-                                        <i class="fa fa-ellipsis-v"></i>
-                                        <i class="fa fa-ellipsis-v"></i>
-                                    </span>
                                     <input type="checkbox" class="minimal" name="exportcolumns[]" value="participant.participant_no" />
                                     <label><?= lang('contact_number'); ?></label>
                                 </div>
@@ -208,29 +200,6 @@
                             </div>
                         </div>
                         <hr>
-                    </div>
-                    <div id="halqa_area" class="hidden">
-                        <div class="row">
-                            <div class="col-sm-12"><h4><?= lang('halqa'); ?></h4></div>
-                            <div class="col-sm-12">
-                                <div class="col-sm-8">
-                                    <div id="custom_halqa" class="form-group hidden">
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <label class="control-label">
-                                        <input type="radio" name="halqa" class="minimal" value="custom" <?= set_radio('halqa', 'custom'); ?> /> <?= lang('custom'); ?>
-                                    </label>
-
-                                </div>
-                                <div class="col-sm-2">
-                                    <label class="control-label">
-                                        <input type="radio" name="halqa" class="minimal" value="all" <?= set_radio('halqa', 'all', TRUE); ?> /> <?= lang('all'); ?>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">

@@ -78,11 +78,6 @@
                                         <input type="radio" name="organizer" class="minimal" value="city" <?= ($organizer == 'city') ? 'checked' : ''; ?> /> <?= lang('city'); ?>
                                     </label>
                                 </div>
-                                <div class="col-sm-3 pull-right">
-                                    <label class="control-label">
-                                        <input type="radio" name="organizer" class="minimal" value="halqa" <?= ($organizer == 'halqa') ? 'checked' : ''; ?> /> <?= lang('halqa'); ?>
-                                    </label>
-                                </div>
                             </div>
 
                         </div>
@@ -260,40 +255,6 @@
                                         <div class="col-sm-4 pull-right">
                                             <label class="control-label">
                                                 <input type="checkbox" class="minimal" name="custom_city[]" value="<?= $city->city_id; ?>" <?= (($zone_option == 'custom') && in_array($city->city_id, $cutom_city)) ? 'checked' : ''; ?>/> <?= $city->city_name; ?>
-                                            </label>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="halqa_area" class="<?= ($city_option == 'all') ? 'hidden' : ''; ?>">
-                <div class="row to-right">
-                    <div class="col-sm-12">
-                        <label class="col-sm-2 control-label pull-right text-left" for="halqa" ><?= lang('halqa'); ?>: </label>
-                        <div class="col-sm-4 pull-right">
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label class="control-label">
-                                        <input type="radio" name="halqa" class="minimal" value="custom" <?= ($halqa_option == 'custom') ? 'checked' : ''; ?> /> <?= lang('custom'); ?>
-                                    </label>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="control-label">
-                                        <input type="radio" name="halqa" class="minimal" value="all" <?= ($halqa_option == 'all') ? 'checked' : ''; ?> /> <?= lang('all'); ?>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 pull-right">
-                            <div id="custom_halqa" class="form-group<?= ($halqa_option == 'all') ? ' hidden' : ''; ?>">
-                                <?php if ($halqas): ?>
-                                    <?php foreach ($halqas as $halqa): ?>
-                                        <div class="col-sm-4 pull-right">
-                                            <label class="control-label">
-                                                <input type="checkbox" class="minimal" name="custom_halqa[]" value="<?= $halqa->halqa_id; ?>" <?= (($city_option == 'custom') && in_array($halqa->halqa_id, $cutom_halqa)) ? 'checked' : ''; ?>/> <?= $halqa->halqa_name; ?>
                                             </label>
                                         </div>
                                     <?php endforeach; ?>
