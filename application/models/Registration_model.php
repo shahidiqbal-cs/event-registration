@@ -9,7 +9,6 @@ class Registration_model extends CI_Model {
         $this->load->database();
         $this->zone = 'zone';
         $this->city = 'city';
-        $this->halqa = 'halqa';
         $this->event = 'event';
         $this->ideology = 'ideology';
         $this->propagation = 'propagation';
@@ -26,9 +25,8 @@ class Registration_model extends CI_Model {
         $this->db->join($this->ideology, 'ideology.ideology_id = participant.ideology_id','left');
         $this->db->join($this->propagation, 'propagation.propagation_id = participant.propagation_id','left');
         $this->db->join('majlis_amomi', 'majlis_amomi.majlis_amomi_id = participant.majlis_amomi_id', 'left');
-        $this->db->join($this->halqa, 'halqa.halqa_id = participant.halqa_id');
-        $this->db->join($this->city, 'city.city_id = halqa.city_id');
-        $this->db->join($this->zone, 'zone.zone_id = city.zone_id');
+        $this->db->join($this->city, "{$this->city}.city_id = {$this->participant}.city_id");
+        $this->db->join($this->zone, "{$this->zone}.zone_id = {$this->city}.zone_id");
     }
 
     function get_a_registration($where) {

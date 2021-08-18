@@ -102,7 +102,7 @@
                                 <td><?= $participant->ideology_status; ?></td>
                                 <td><?= $participant->propagation_status; ?></td>
                                 <td><?= $participant->administrative_status; ?></td>
-                                <td><?= $participant->city_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->halqa_name; ?></td>
+                                <td><?= $participant->zone_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->city_name; ?></td>
                                 <td><?= ($participant->registration_status) ? 'Present' : 'Absent'; ?></td>
                                 <td class="to-left"><?= ($participant->registration_status) ? date('d-M-Y g:i a', strtotime($participant->registration_status)) : ''; ?></td>
                             </tr>

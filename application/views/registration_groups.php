@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col-xs-6"><?= lang('groups_questions'); ?></div>
                                 <div class="col-xs-1"><?= lang('attendance'); ?></div>
-                                <div class="col-xs-2"><?= lang('halqa'); ?></div>
+                                <div class="col-xs-2"><?= lang('city'); ?></div>
                                 <div class="col-xs-2"><?= lang('name'); ?></div>
                                 <div class="col-xs-1">ID</div>
                             </div>
@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-xs-6">&ensp;</div>
                                     <div class="col-xs-1">&ensp;</div>
-                                    <div class="col-xs-2"><?= $participant->halqa_name; ?></div>
+                                    <div class="col-xs-2"><?= $participant->city_name; ?></div>
                                     <div class="col-xs-2"><?= $participant->name; ?></div>
                                     <div class="col-xs-1"><?= $participant->participant_id; ?></div>
                                 </div>
