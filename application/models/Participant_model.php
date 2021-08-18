@@ -19,8 +19,7 @@ class Participant_model extends CI_Model {
         $this->db->join('ideology', 'ideology.ideology_id = participant.ideology_id','left');
         $this->db->join('propagation', 'propagation.propagation_id = participant.propagation_id','left');
         $this->db->join('majlis_amomi', 'majlis_amomi.majlis_amomi_id = participant.majlis_amomi_id','left');
-        $this->db->join('halqa', 'halqa.halqa_id = participant.halqa_id');
-        $this->db->join('city', 'city.city_id = halqa.city_id');
+        $this->db->join('city', 'city.city_id = participant.city_id');
         $this->db->join('zone', 'zone.zone_id = city.zone_id');
     }
 

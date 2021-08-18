@@ -25,7 +25,7 @@
                             <td><?= $region->region_name; ?></td>
                             <td><?= $region->region_id; ?></td>
                             <td>
-                                <a title="Edit Region Info" href="<?= site_url('organization/region/edit/' . $region->region_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
+                                <a title="Edit <?= lang('region') ?> Info" href="<?= site_url('organization/region/edit/' . $region->region_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
                             </td>
                         </tr>
                     <?php endforeach; ?>

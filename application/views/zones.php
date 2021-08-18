@@ -1,6 +1,6 @@
 <div class="box box-primary">    
     <div class="box-header with-border">
-        <h3 class="box-title"> <a href="<?= site_url('organization/zone/new'); ?>" class="btn btn-block btn-default"> Add new zone</a></h3>
+        <h3 class="box-title"> <a href="<?= site_url('organization/zone/new'); ?>" class="btn btn-block btn-default"><?= lang('zone'); ?>  <?= lang('add_new'); ?></a></h3>
         <div class="box-tools pull-right">
             <button title="" data-toggle="tooltip" data-widget="collapse" class="btn btn-box-tool" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
         </div>
@@ -27,8 +27,8 @@
                             <td><?= $zone->zone_name; ?></td>
                             <td><?= $zone->zone_id; ?></td>
                             <td>
-                                <a title="Delete Zone" href="<?= site_url('organization/zone/delete/' . $zone->zone_id); ?>" data-confirm="Are you sure you want to delete zone?"><i class="fa fa-trash"></i></a>&ensp;
-                                <a title="Edit Zone Info" href="<?= site_url('organization/zone/edit/' . $zone->zone_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
+                                <a title="Delete <?= lang('zone') ?>" href="<?= site_url('organization/zone/delete/' . $zone->zone_id); ?>" data-confirm="Are you sure you want to delete?"><i class="fa fa-trash"></i></a>&ensp;
+                                <a title="Edit <?= lang('zone') ?> Info" href="<?= site_url('organization/zone/edit/' . $zone->zone_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
                             </td>
                         </tr>
                     <?php endforeach; ?>

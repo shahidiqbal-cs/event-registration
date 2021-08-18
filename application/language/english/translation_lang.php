@@ -16,7 +16,7 @@ $lang['organizations'] = 'تنظیمات';
  
 $lang['organization'] = 'تنظیم';
 $lang['organizational'] = 'تنظیمی';
-$lang['center'] = 'مقام (شہر / حلقہ) ';
+$lang['center'] = 'مقام';
 $lang['branch'] = 'شاخ';
 $lang['unit'] = 'یونٹ';
 $lang['halqa'] = 'حلقہ';
@@ -88,3 +88,4 @@ $lang['trash'] = 'ٹریش';
 $lang['keep_in_trash'] = 'ٹریش میں رکھیں';
 $lang['move_to_record'] = 'ریکارڈ میں واپس اندراج کریں';
 $lang['comment'] = 'تبصرہ';
+$lang['add_new'] = 'کا اضافہ کریں';

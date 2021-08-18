@@ -2,9 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Participant extends CI_Controller {
+class Participant extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model(array('propagation_model', 'majlis_amomi_model', 'registration_model', 'event_model'));
         if (!is_logged()):
@@ -12,7 +14,8 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    private function template($output) {
+    private function template($output)
+    {
         if ($output->content != 'grocery_crud'):
             $editor = $this->tfw_model->get_option('active_gc_editor_for_admin')->option_value;
             $css_files = array();
@@ -54,7 +57,8 @@ class Participant extends CI_Controller {
         $this->parser->parse('template', $output);
     }
 
-    private function initialize_participant($data) {
+    private function initialize_participant($data)
+    {
         if ($this->input->post()):
             $data->name = set_value('name');
             $data->fname = set_value('father_name');
@@ -69,7 +73,6 @@ class Participant extends CI_Controller {
             $data->majlis_amomi_id = set_value('majlis_amomi_id');
             $data->zone_id = set_value('zone_id');
             $data->city_id = set_value('city_id');
-            $data->halqa_id = set_value('halqa_id');
             $data->blood_group = set_value('blood_group');
         endif;
         $data->content = 'participant-form';
@@ -77,11 +80,11 @@ class Participant extends CI_Controller {
         $data->majlis_amomis = $this->majlis_amomi_model->get();
         $data->zones = $this->organization_model->get_zones();
         $data->cites = $this->organization_model->get_city_against_zone($data->zone_id);
-        $data->halqas = $this->organization_model->get_halqa_against_city($data->city_id);
     }
 
-    function index() {
-        $data = (object) array();
+    function index()
+    {
+        $data = (object)array();
         $data->title = 'Participants';
         $data->heading = 'Participants';
         $data->heading_desc = 'Participants';
@@ -104,9 +107,10 @@ class Participant extends CI_Controller {
     }
 
 //CRUD
-    function create() {
+    function create()
+    {
         if ($this->form_validation->run('participant') == FALSE) :
-            $data = (object) array();
+            $data = (object)array();
             $data->title = 'Add new participant';
             $data->heading = 'Add new participant';
             $data->heading_desc = 'Add new participant';
@@ -123,11 +127,9 @@ class Participant extends CI_Controller {
             $data->administrative_status = '';
             $data->blood_group = '';
             $zones = $this->organization_model->get_zones();
-            $data->zone_id = $zones[0]->zone_id;
+            $data->zone_id = count($zones) ? $zones[0]->zone_id : '';
             $cites = $this->organization_model->get_city_against_zone($data->zone_id);
-            $data->city_id = $cites[0]->city_id;
-            $halqas = $this->organization_model->get_halqa_against_city($data->city_id);
-            $data->halqa_id = $halqas[0]->halqa_id;
+            $data->city_id = count($cites) ? $cites[0]->city_id : '';
             $this->initialize_participant($data);
             ///////////////// User data strings /////////////////
             $this->template($data);
@@ -164,14 +166,15 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    function read($participant_id) {
+    function read($participant_id)
+    {
         if ($participant_id):
-            $data = (object) array();
+            $data = (object)array();
             $data->title = 'Participant';
             $data->heading = 'Participant';
             $data->heading_desc = 'Participant';
             $participant = $this->participant_model->get_a_participant(array('participant_id' => $participant_id));
-            $data->the_participant = (array) $participant;
+            $data->the_participant = (array)$participant;
             $data->content = 'participant-single';
             $this->template($data);
         else:
@@ -180,16 +183,17 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    function update($participant_id) {
+    function update($participant_id)
+    {
         if ($participant_id):
             if ($this->form_validation->run('participant') == FALSE) :
                 ///////////////// User data strings /////////////////
-                $data = (object) array();
+                $data = (object)array();
                 $data->title = 'Participant';
                 $data->heading = 'Participant';
                 $data->heading_desc = 'Participant';
                 $participant = $this->participant_model->get_a_participant(array('participant_id' => $participant_id));
-                $data->the_participant = (array) $participant;
+                $data->the_participant = (array)$participant;
                 $data->participant_id = $participant->participant_id;
                 $data->name = $participant->name;
                 $data->fname = $participant->father_name;
@@ -202,7 +206,6 @@ class Participant extends CI_Controller {
                 $data->administrative_status = $participant->administrative_status;
                 $data->zone_id = $participant->zone_id;
                 $data->city_id = $participant->city_id;
-                $data->halqa_id = $participant->halqa_id;
                 $data->blood_group = $participant->blood_group;
                 $this->initialize_participant($data);
                 $this->template($data);
@@ -224,7 +227,8 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    function delete($participant_id) {
+    function delete($participant_id)
+    {
         if ($participant_id):
             $delete_participant_data = array('participant_status' => 0, 'participant_status_text' => 'drop');
             $updateParticipant = $this->participant_model->update_participant($delete_participant_data, array('participant_id' => $participant_id));
@@ -239,9 +243,10 @@ class Participant extends CI_Controller {
         redirect(site_url('participant'));
     }
 
-    function export() {
+    function export()
+    {
         if ($this->form_validation->run('export_participant') == FALSE) :
-            $data = (object) array();
+            $data = (object)array();
             $data->title = 'Export';
             $data->heading = 'Export';
             $data->heading_desc = 'Export';
@@ -261,7 +266,6 @@ class Participant extends CI_Controller {
                 'majlis_amomi.majlis_amomi_status' => lang('majlis_amomi'),
                 'zone.zone_name' => lang('zone'),
                 'city.city_name' => lang('city'),
-                'halqa.halqa_name' => lang('halqa'),
                 'participant.participant_no' => lang('contact_number'),
                 'participant.participant_email' => lang('email'),
                 'participant.blood_group' => lang('blood') . ' ' . lang('group'),
@@ -284,18 +288,12 @@ class Participant extends CI_Controller {
             $propagation = $this->input->post('propagation');
             $zone = $this->input->post('zone');
             $city = $this->input->post('city');
-            $halqa = $this->input->post('halqa');
             $query_array['participant.ideology_id'] = $ideologies;
             $query_array['participant.propagation_id'] = $propagation;
             if ($zone == 'custom'):
                 if ($city == 'custom'):
-                    if ($halqa == 'custom'):
-                        $custom_halqa = $this->input->post('custom_halqa');
-                        $query_array['halqa.halqa_id'] = $custom_halqa;
-                    else:
-                        $custom_city = $this->input->post('custom_city');
-                        $query_array['city.city_id'] = $custom_city;
-                    endif;
+                    $custom_city = $this->input->post('custom_city');
+                    $query_array['city.city_id'] = $custom_city;
                 else:
                     $custom_zone = $this->input->post('custom_zone');
                     $query_array['zone.zone_id'] = $custom_zone;
@@ -325,7 +323,8 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    function create_excel_file($data, $heading, $no_of_column, $file_name, $active_sheet_index = 0, $rtl_direction = true) {
+    function create_excel_file($data, $heading, $no_of_column, $file_name, $active_sheet_index = 0, $rtl_direction = true)
+    {
         $creator_name = 'tfw';
         /*
          * ************************ Header Setting *************************
@@ -347,13 +346,13 @@ class Participant extends CI_Controller {
 
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->getProperties()
-                ->setCreator($creator_name)
-                ->setLastModifiedBy($creator_name)
-                ->setTitle($file_name)
-                ->setSubject($file_name)
-                ->setDescription($file_name)
-                ->setKeywords($file_name)
-                ->setCategory($file_name); // Set document properties
+            ->setCreator($creator_name)
+            ->setLastModifiedBy($creator_name)
+            ->setTitle($file_name)
+            ->setSubject($file_name)
+            ->setDescription($file_name)
+            ->setKeywords($file_name)
+            ->setCategory($file_name); // Set document properties
         $objPHPExcel->setActiveSheetIndex($active_sheet_index); // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $objPHPExcel->getActiveSheet()->setRightToLeft($rtl_direction); // Right-to-left worksheet
         $objPHPExcel->getActiveSheet()->setTitle($file_name); // Rename worksheet
@@ -366,7 +365,8 @@ class Participant extends CI_Controller {
         $objWriter->save('php://output');
     }
 
-    private function check_participant_belong_to_event($participant_id, $event_id) {
+    private function check_participant_belong_to_event($participant_id, $event_id)
+    {
         $event = $this->event_model->get_a_event(array('event_id' => $event_id));
         $participant = $this->participant_model->get_a_participant(array('participant_id' => $participant_id));
         if ($event->selected_ideology && in_array($participant->ideology_id, unserialize($event->selected_ideology))):
@@ -384,8 +384,9 @@ class Participant extends CI_Controller {
         return false;
     }
 
-    function trash() {
-        $data = (object) array();
+    function trash()
+    {
+        $data = (object)array();
         $data->title = 'Participants';
         $data->heading = 'Participants';
         $data->heading_desc = 'Participants';
@@ -407,16 +408,17 @@ class Participant extends CI_Controller {
         $this->template($data);
     }
 
-    function trash_update($participant_id) {
+    function trash_update($participant_id)
+    {
         if ($participant_id):
             if ($this->form_validation->run('participant_trash') == FALSE) :
-                $data = (object) array();
+                $data = (object)array();
                 $data->title = 'Participants';
                 $data->heading = 'Participants';
                 $data->heading_desc = 'Participants';
                 $data->content = 'participants-trash-form';
                 $participant = $this->participant_model->get_a_participant(array('participant_id' => $participant_id));
-                $data->participant = (array) $participant;
+                $data->participant = (array)$participant;
                 $this->template($data);
             else:
                 $trash_update = $this->input->post();
@@ -437,7 +439,8 @@ class Participant extends CI_Controller {
         endif;
     }
 
-    function trash_delete($participant_id) {
+    function trash_delete($participant_id)
+    {
         if ($participant_id):
             if ($this->registration_model->remove_registration(array('participant_id' => $participant_id)) && $this->participant_model->delete_participant($participant_id)):
                 flash_msg('success', 'Participant data erased from database.');

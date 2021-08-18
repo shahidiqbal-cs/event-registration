@@ -63,9 +63,9 @@ class Organization extends CI_Controller {
 
     function regions() {
         $data = (object) array();
-        $data->title = 'Region';
-        $data->heading = 'Region';
-        $data->heading_desc = 'Region';
+        $data->title = lang('region');
+        $data->heading = lang('region');
+        $data->heading_desc = '';
         $data->content = 'Regions';
         $data->regions = $this->organization_model->get_regions();
         $this->template($data);
@@ -73,9 +73,9 @@ class Organization extends CI_Controller {
 
     function zones() {
         $data = (object) array();
-        $data->title = 'Zone';
-        $data->heading = 'Zone';
-        $data->heading_desc = 'Zone';
+        $data->title = lang('zone');
+        $data->heading = lang('zone');
+        $data->heading_desc = '';
         $data->content = 'Zones';
         $data->zones = $this->organization_model->get_zones();
         $this->template($data);
@@ -85,9 +85,9 @@ class Organization extends CI_Controller {
         if ($action == 'edit' && $id):
             if ($this->form_validation->run('organization') == FALSE) :
                 $data = (object) array();
-                $data->title = 'Region';
-                $data->heading = 'Region';
-                $data->heading_desc = 'Region';
+                $data->title = lang('region');
+                $data->heading = lang('region');
+                $data->heading_desc = '';
                 $data->content = 'region-form';
                 $detail = $this->organization_model->get_region(array('region_id' => $id));
                 $data->organization_name = $detail->region_name;
@@ -116,9 +116,9 @@ class Organization extends CI_Controller {
         if ($action == 'new' or $action == 'edit'):
             if ($this->form_validation->run('organization') == FALSE) :
                 $data = (object) array();
-                $data->title = 'Zone';
-                $data->heading = 'Zone';
-                $data->heading_desc = 'Zone';
+                $data->title = lang('zone');
+                $data->heading = lang('zone');
+                $data->heading_desc = '';
                 $data->content = 'zone-form';
                 $data->organization_name = '';
                 $data->organization_parent = '';
@@ -179,9 +179,9 @@ class Organization extends CI_Controller {
 
     function cities() {
         $data = (object) array();
-        $data->title = 'City';
-        $data->heading = 'City';
-        $data->heading_desc = 'City';
+        $data->title = lang('city');
+        $data->heading = lang('city');
+        $data->heading_desc = '';
         $data->content = 'cites';
         $data->cities = $this->organization_model->get_cities();
         $this->template($data);
@@ -191,9 +191,9 @@ class Organization extends CI_Controller {
         if ($action == 'new' or $action == 'edit'):
             if ($this->form_validation->run('organization') == FALSE) :
                 $data = (object) array();
-                $data->title = 'City';
-                $data->heading = 'City';
-                $data->heading_desc = 'City';
+                $data->title = lang('city');
+                $data->heading = lang('city');
+                $data->heading_desc = '';
                 $data->content = 'city-form';
                 $data->organization_name = '';
                 $data->organization_parent = '';
@@ -250,71 +250,6 @@ class Organization extends CI_Controller {
         else:
             flash_msg('error', 'Fail to add new city. Try again');
             redirect(site_url('organization/cities'));
-        endif;
-    }
-
-    function halqa($action, $halqa_id = null) {
-        if ($action == 'new' or $action == 'edit'):
-            if ($this->form_validation->run('organization') == FALSE) :
-                $data = (object) array();
-                $data->title = 'Halqa';
-                $data->heading = 'Halqa';
-                $data->heading_desc = 'Halqa';
-                $data->content = 'halqa-form';
-                $data->organization_name = '';
-                $data->organization_parent = '';
-                $data->organization_description = '';
-                if ($action == 'edit'):
-                    if ($halqa_id != null):
-                        $halqa_detail = $this->organization_model->get_halqa(array('halqa_id' => $halqa_id));
-                        if ($halqa_detail):
-                            $data->organization_name = $halqa_detail->halqa_name;
-                            $data->organization_parent = $halqa_detail->city_id;
-                            $data->organization_description = $halqa_detail->halqa_description;
-                        endif;
-                    else:
-                        flash_msg('error', 'The url you are trying is not right.');
-                        redirect(site_url('organization/halqas'));
-                    endif;
-                endif;
-                $data->cites = $this->organization_model->get_cities();
-                $this->initialize_organization($data);
-                $this->template($data);
-            else:
-                $halqa['halqa_name'] = $this->input->post('organization_name');
-                $halqa['city_id'] = $this->input->post('organization_parent');
-                $halqa['halqa_description'] = $this->input->post('organization_description');
-                if ($action == 'new'):
-                    $insert_query = $this->organization_model->insert_halqa($halqa);
-                    if ($insert_query):
-                        $halqa_id = $this->organization_model->last_id();
-                        flash_msg('success', 'New halqa added successfully.');
-                    else:
-                        flash_msg('error', 'Fail to add new halqa. Try again');
-                    endif;
-                elseif ($action == 'edit' && $halqa_id != null):
-                    $update = $this->organization_model->update_halqa($halqa, array('halqa_id' => $halqa_id));
-                    if ($update):
-                        flash_msg('success', 'Saved successfully.');
-                    else:
-                        flash_msg('error', 'Fail to update halqa. Try again');
-                    endif;
-                else:
-                    flash_msg('error', 'The url you are trying is not right.');
-                endif;
-                redirect(site_url('organization/halqas'));
-            endif;
-        elseif ($action == 'delete' && $halqa_id != null):
-            $delete = $this->organization_model->delete_halqa($halqa_id);
-            if ($delete):
-                flash_msg('success', 'Deleted successfully.');
-            else:
-                flash_msg('error', 'Error! Fail to delete. Try again');
-            endif;
-            redirect(site_url('organization/halqas'));
-        else:
-            flash_msg('error', 'Fail to add new halqa. Try again');
-            redirect(site_url('organization/halqas'));
         endif;
     }
 

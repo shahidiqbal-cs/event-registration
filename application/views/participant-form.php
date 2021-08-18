@@ -193,20 +193,6 @@
                             </div>
                             <label class="col-sm-3 control-label text-left"><?= lang('city'); ?>: </label>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-8 to-right">
-                                <select class="form-control" name="halqa_id" id="halqa_organization">
-                                    <?php if ($halqas): ?>
-                                        <?php foreach ($halqas as $halqa): ?>
-                                            <option value="<?= $halqa->halqa_id; ?>" <?= ($halqa_id == $halqa->halqa_id) ? 'selected' : ''; ?>><?= $halqa->halqa_name; ?></option>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                            <label class="col-sm-3 control-label text-left"><?= lang('halqa'); ?>: </label>
-                        </div>
-
                     </div>
                     <?php if ($this->session->userdata('active_event') && !$participant_id): ?>
                         <div class="col-sm-6">

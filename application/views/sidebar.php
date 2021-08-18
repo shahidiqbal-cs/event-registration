@@ -144,9 +144,6 @@ endif;
                     <li class="<?= (($current_class === 'organization') && ($current_method === 'cities' or $current_method === 'city')) ? ' active' : ''; ?>">
                         <a href="<?= site_url('organization/cities'); ?>"><i class="fa fa-circle-o"></i> <?= lang('city')?></a>
                     </li>
-                    <li class="<?= (($current_class === 'organization') && ($current_method === 'halqas' or $current_method === 'halqa')) ? ' active' : ''; ?>">
-                        <a href="<?= site_url('organization/halqas'); ?>"><i class="fa fa-circle-o"></i> Halqa</a>
-                    </li>
                 </ul>
             </li>
             <!---------------------- End Organization ---------------------->

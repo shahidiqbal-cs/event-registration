@@ -1,6 +1,6 @@
 <div class="box box-primary">    
     <div class="box-header with-border">
-        <h3 class="box-title"> <a href="<?= site_url('organization/city/new'); ?>" class="btn btn-block btn-default"> Add new city</a></h3>
+        <h3 class="box-title"> <a href="<?= site_url('organization/city/new'); ?>" class="btn btn-block btn-default"> <?= lang('city'); ?> <?= lang('add_new'); ?></a></h3>
         <div class="box-tools pull-right">
             <button title="" data-toggle="tooltip" data-widget="collapse" class="btn btn-box-tool" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
         </div>
@@ -27,8 +27,8 @@
                             <td><?= $city->city_name; ?></td>
                             <td><?= $city->city_id; ?></td>
                             <td>
-                                <a title="Delete Halqa" href="<?= site_url('organization/city/delete/' . $city->city_id); ?>" data-confirm="Are you sure you want to delete?"><i class="fa fa-trash"></i></a>&ensp;
-                                <a title="Edit Halqa Info" href="<?= site_url('organization/city/edit/' . $city->city_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
+                                <a title="Delete <?= lang('city') ?>" href="<?= site_url('organization/city/delete/' . $city->city_id); ?>" data-confirm="Are you sure you want to delete?"><i class="fa fa-trash"></i></a>&ensp;
+                                <a title="Edit <?= lang('city') ?> Info" href="<?= site_url('organization/city/edit/' . $city->city_id); ?>"><i class="fa fa-edit"></i></a>&ensp;
                             </td>
                         </tr>
                     <?php endforeach; ?>

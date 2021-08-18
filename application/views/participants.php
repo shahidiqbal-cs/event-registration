@@ -105,7 +105,7 @@
                             <th><?= $participant->propagation_status; ?></th>
                             <th><?= $participant->majlis_amomi_status; ?></th>
                             <th><?= $participant->participant_no; ?></th>
-                            <td><?= $participant->city_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->halqa_name; ?></td>
+                            <td><?= $participant->zone_name; ?> <i class="fa fa-hand-o-left margin-r-5"></i> <?= $participant->city_name; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
