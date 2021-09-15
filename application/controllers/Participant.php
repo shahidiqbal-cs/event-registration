@@ -135,7 +135,6 @@ class Participant extends CI_Controller
             $this->template($data);
         else:
             $participantData = $this->input->post();
-            unset($participantData['city_id']);
             unset($participantData['zone_id']);
             unset($participantData['add_to_current_event']);
             $register = $this->participant_model->register_participant($participantData);
