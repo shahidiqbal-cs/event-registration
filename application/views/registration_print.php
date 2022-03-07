@@ -132,7 +132,7 @@
                             <th><?= ($participant->registration_status) ? lang('present') : lang('absent'); ?></th>
                         <?php elseif ($this->uri->segment(3) == 'panel'): ?>
                             <?php for ($i = 1; $i <= $sessions; $i++) : ?>
-                                <th>&ensp;</th>
+                                <td>&ensp;</td>
                             <?php endfor; ?>
                         <?php else: ?>
                             <td>&ensp;</td>
