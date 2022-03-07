@@ -35,7 +35,7 @@
 
 .printing_section{font-family: JameelNooriNastaleeq;}
 .printing_section table.table-bordered tbody td{border: 1px solid black; font-family: JameelNooriNastaleeq;}
-.printing_section .registration th:first-child,.printing_section .registration th:nth-child(2) {width: 20%;}
+/*.printing_section .registration th:first-child,.printing_section .registration th:nth-child(2) {width: 20%;}*/
 .printing_tabs .table td,.printing_tabs .table th,.printing_section .table td,.printing_section .table th{line-height:1.0;}
 .printing_tabs table.table-bordered thead th,.printing_section table.table-bordered thead th{border: 1px solid black; text-align: center; border-top: 1px solid black;}
 .table tbody tr th {

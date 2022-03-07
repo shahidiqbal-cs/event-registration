@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
         lengthChange: true,
         searching: true,
         ordering: true,
-        "order": [[ 0, "asc" ]],
+        order: [[ 0, "asc" ]],
         info: true,
         autoWidth: false,
         displayLength: 25,
