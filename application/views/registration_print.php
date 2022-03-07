@@ -92,14 +92,19 @@
 
     <div class="box-body">
         <?php if ($attendance): ?>
-            <table id="data_table" class="table table-bordered table-hover urdu-direction registration">
+            <table id="data_table" class="table table-bordered table-hover to-right registration">
                 <thead>
                 <tr>
+                    <th>ID</th>
+                    <th><?= lang('name'); ?></th>
+                    <th><?= lang('father_name'); ?></th>
+                    <th><?= lang('ideology_status'); ?></th>
+                    <th><?= lang('center'); ?></th>
                     <?php if ($this->uri->segment(3) == 'desk'): ?>
                         <th><?= lang('signature'); ?></th>
                         <th><?= lang('arrival_time'); ?></th>
                     <?php elseif ($this->uri->segment(3) == 'panel'): ?>
-                        <?php for ($i = $sessions; $i > 0; $i--) : ?>
+                        <?php for ($i = 1; $i <= $sessions; $i++) : ?>
                             <th><?= lang("session_{$i}"); ?></th>
                         <?php endfor; ?>
                     <?php elseif ($this->uri->segment(3) == 'present' or $this->uri->segment(3) == 'absent' or $this->uri->segment(3) == 'leave'): ?>
@@ -109,16 +114,16 @@
                         <th><?= lang('arrival_time'); ?></th>
                         <th><?= lang('attendance'); ?></th>
                     <?php endif; ?>
-                    <th><?= lang('center'); ?></th>
-                    <th><?= lang('ideology_status'); ?></th>
-                    <th><?= lang('father_name'); ?></th>
-                    <th><?= lang('name'); ?></th>
-                    <th>ID</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($attendance as $participant): ?>
                     <tr>
+                        <td><?= $participant->participant_id; ?></td>
+                        <td><?= $participant->name; ?></td>
+                        <td><?= $participant->father_name; ?></td>
+                        <td><?= $event['selected_majlis_amomi'] && $participant->majlis_amomi_status?$participant->majlis_amomi_status:$participant->ideology_status; ?></td>
+                        <td><?= $participant->city_name; ?></td>
                         <?php if ($this->uri->segment(3) == 'present' or $this->uri->segment(3) == 'absent' or $this->uri->segment(3) == 'leave'): ?>
                             <?php if ($this->uri->segment(3) == 'leave'): ?>
                                 <td class="to-left time"><?= date('F d, Y g:i a', strtotime($participant->leave_date_time)); ?></td>
@@ -133,37 +138,9 @@
                             <td>&ensp;</td>
                             <td>&ensp;</td>
                         <?php endif; ?>
-                        <td><?= $participant->city_name; ?></td>
-                        <td><?= $event['selected_majlis_amomi'] && $participant->majlis_amomi_status?$participant->majlis_amomi_status:$participant->ideology_status; ?></td>
-                        <td><?= $participant->father_name; ?></td>
-                        <td><?= $participant->name; ?></td>
-                        <td><?= $participant->participant_id; ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
-                <tfoot>
-                <tr>
-                    <?php if ($this->uri->segment(3) == 'desk'): ?>
-                        <th><?= lang('signature'); ?></th>
-                        <th><?= lang('arrival_time'); ?></th>
-                    <?php elseif ($this->uri->segment(3) == 'panel'): ?>
-                        <?php for ($i = $sessions; $i > 0; $i--) : ?>
-                            <th><?= lang("session_{$i}"); ?></th>
-                        <?php endfor; ?>
-                    <?php elseif ($this->uri->segment(3) == 'present' or $this->uri->segment(3) == 'absent' or $this->uri->segment(3) == 'leave'): ?>
-                        <?php if ($this->uri->segment(3) == 'leave'): ?>
-                            <th><?= lang('time') . ' ' . lang('leave'); ?></th>
-                        <?php endif; ?>
-                        <th><?= lang('arrival_time'); ?></th>
-                        <th><?= lang('attendance'); ?></th>
-                    <?php endif; ?>
-                    <th><?= lang('center'); ?></th>
-                    <th><?= lang('ideology_status'); ?></th>
-                    <th><?= lang('father_name'); ?></th>
-                    <th><?= lang('name'); ?></th>
-                    <th>ID</th>
-                </tr>
-                </tfoot>
             </table>
         <?php else: ?>
             <div class="alert alert-danger alert-dismissable">
