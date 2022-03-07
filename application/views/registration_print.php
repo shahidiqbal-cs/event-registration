@@ -60,7 +60,23 @@
                     </select>
                 </div>
             </div>
-
+            <?php if ($this->uri->segment(3) == 'panel') { ?>
+                <hr>
+                <div class="col-md-4" style="direction: ltr">
+                    <div class="form-group">
+                        <?php
+                        $sessions = $this->input->get('sessions') ? $this->input->get('sessions') : 2;
+                        ?>
+                        <label># of sessions</label>
+                        <select name="sessions" class="form-control" style="display:inline-block"
+                                onchange="this.form.submit()">
+                            <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                <option value="<?= $i; ?>" <?= ($sessions == $i) ? 'selected' : ''; ?>><?= $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+            <?php } ?>
         </form>
     </div>
 </div>
@@ -83,8 +99,9 @@
                         <th><?= lang('signature'); ?></th>
                         <th><?= lang('arrival_time'); ?></th>
                     <?php elseif ($this->uri->segment(3) == 'panel'): ?>
-                        <th><?= lang('second_session'); ?></th>
-                        <th><?= lang('first_session'); ?></th>
+                        <?php for ($i = $sessions; $i > 0; $i--) : ?>
+                            <th><?= lang("session_{$i}"); ?></th>
+                        <?php endfor; ?>
                     <?php elseif ($this->uri->segment(3) == 'present' or $this->uri->segment(3) == 'absent' or $this->uri->segment(3) == 'leave'): ?>
                         <?php if ($this->uri->segment(3) == 'leave'): ?>
                             <th><?= lang('time') . ' ' . lang('leave'); ?></th>
@@ -108,6 +125,10 @@
                             <?php endif; ?>
                             <td class="to-left time"><?= ($participant->registration_status) ? date('F d, Y g:i a', strtotime($participant->registration_time)) : ''; ?></td>
                             <th><?= ($participant->registration_status) ? lang('present') : lang('absent'); ?></th>
+                        <?php elseif ($this->uri->segment(3) == 'panel'): ?>
+                            <?php for ($i = 1; $i <= $sessions; $i++) : ?>
+                                <th>&ensp;</th>
+                            <?php endfor; ?>
                         <?php else: ?>
                             <td>&ensp;</td>
                             <td>&ensp;</td>
@@ -126,8 +147,9 @@
                         <th><?= lang('signature'); ?></th>
                         <th><?= lang('arrival_time'); ?></th>
                     <?php elseif ($this->uri->segment(3) == 'panel'): ?>
-                        <th><?= lang('second_session'); ?></th>
-                        <th><?= lang('first_session'); ?></th>
+                        <?php for ($i = $sessions; $i > 0; $i--) : ?>
+                            <th><?= lang("session_{$i}"); ?></th>
+                        <?php endfor; ?>
                     <?php elseif ($this->uri->segment(3) == 'present' or $this->uri->segment(3) == 'absent' or $this->uri->segment(3) == 'leave'): ?>
                         <?php if ($this->uri->segment(3) == 'leave'): ?>
                             <th><?= lang('time') . ' ' . lang('leave'); ?></th>

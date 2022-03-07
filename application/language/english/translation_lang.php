@@ -53,6 +53,11 @@ $lang['registration'] = 'رجسٹریشن';
 
 $lang['first_session'] = 'پہلی نشست';
 $lang['second_session'] = 'دوسری نشست';
+$lang['session_1'] = 'پہلی نشست';
+$lang['session_2'] = 'دوسری نشست';
+$lang['session_3'] = 'تیسری نشست';
+$lang['session_4'] = 'چوتھی نشست';
+$lang['session_5'] = 'پانجویں نشست';
 $lang['attendance_sheet'] = 'حاضری شیٹ';
 $lang['group'] = 'گروپ';
 $lang['leader'] = 'لیڈر';
