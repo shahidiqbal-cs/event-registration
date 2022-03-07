@@ -210,7 +210,6 @@ class Participant extends CI_Controller
                 $this->template($data);
             else:
                 $participantData = $this->input->post();
-                unset($participantData['city_id']);
                 unset($participantData['zone_id']);
                 $updateParticipant = $this->participant_model->update_participant($participantData, array('participant_id' => $participant_id));
                 if ($updateParticipant):
