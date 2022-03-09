@@ -4,9 +4,9 @@
             <li class=""><a href="#tab_overall_summary_zone" data-toggle="tab">
                     <?= lang('summary') . ' ' . lang('zone') . ' (' . lang('status'); ?>)
                 </a></li>
-            <li class=""><a href="#tab_overall_summary_zone_city" data-toggle="tab">
-                    <?= lang('summary') . ' ' . lang('zone') . ' + ' . lang('city') . ' (' . lang('status'); ?>)
-                </a></li>
+<!--            <li class=""><a href="#tab_overall_summary_zone_city" data-toggle="tab">-->
+<!--                    --><?//= lang('summary') . ' ' . lang('zone') . ' + ' . lang('city') . ' (' . lang('status'); ?><!--)-->
+<!--                </a></li>-->
             <li class=""><a href="#tab_overall_summary_city" data-toggle="tab">
                     <?= lang('summary') . ' ' . lang('city') . ' (' . lang('status'); ?>)
                 </a></li>
