@@ -79,3 +79,7 @@ table.table-bordered tfoot tr.row-seprater th,table.table-bordered tbody tr.row-
 /*.badges table thead th {
     font-size: 1.4vw;
 }*/
+
+.text-right {
+	text-align: right !important;
+}

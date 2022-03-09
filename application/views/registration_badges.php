@@ -13,16 +13,18 @@
                     <div class="col-sm-12 <?= ($key != 0 && $key % 10 == 0) ? ' page-break' : ''; ?>">
                 <?php endif; ?>
                 <div class="pull-left badges">
-                    <div class="col-sm-12 demo-content">
-                        <table class="table table-hover to-right registration text-center">
+                    <div class="col-sm-12 badge-container">
+                        <table class="table table-hover to-right urdu-direction registration">
                             <tbody>
-                            <tr>
+                            <tr class="text-center">
                                 <th colspan="4"><?= $badge_header; ?></th>
                             </tr>
                             <tr>
-                                <th colspan="2"><?= $badge->name; ?></th>
-                                <td><?= $badge->ideology_status; ?></td>
-                                <td><?= $badge->participant_id; ?></td>
+                                <th colspan="2" class="text-right"><?= $badge->name; ?></th>
+                                <td colspan="2">
+                                    <span class="pull-right"><?= $badge->ideology_status; ?></span>
+                                    <span class="pull-left reg-number <?= $badge->participant_id < 10 ? 'u-10' : ($badge->participant_id < 99 ? 'u-100' : '') ?>"><?= $badge->participant_id; ?></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2"><?= lang('branch') . ' : ' . $badge->city_name; ?></td>
@@ -74,9 +76,10 @@
         background-size: contain;
     }
 
-    .demo-content {
+    .badge-container {
         position: relative;
     }
+
     .badges .signature {
         width: 100%;
         background-image: url('<?= base_url('/assets/signature.jpeg'); ?>');
@@ -84,5 +87,19 @@
         background-repeat: no-repeat;
         background-position: center;
     }
+
+    span.reg-number.u-10 {
+        padding: 0.5rem 1.5rem
+    }
+    span.reg-number.u-100 {
+        padding: 0.5rem 1rem
+    }
+    span.reg-number {
+        -moz-border-radius: 20px;
+        border-radius: 5rem;
+        border: 1px solid;
+        padding: 0.5rem;
+    }
+
 
 </style>
