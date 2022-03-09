@@ -49,11 +49,11 @@
                                     </tr>
                                 <?php endforeach; ?>
                                 <tr  class="row-seprater">
-                                    <td><?= ($city['total']) ? round(((($city['present'] + $city['leave']) / $city['total']) * 100), 2) : '0'; ?>%</td>
-                                    <td><?= $city['present']; ?></td>
-                                    <td><?= $city['absent']; ?></td>
-                                    <td><?= $city['leave']; ?></td>
-                                    <td><?= $city['total']; ?></td>
+                                    <th><?= ($city['total']) ? round(((($city['present'] + $city['leave']) / $city['total']) * 100), 2) : '0'; ?>%</th>
+                                    <th><?= $city['present']; ?></th>
+                                    <th><?= $city['absent']; ?></th>
+                                    <th><?= $city['leave']; ?></th>
+                                    <th><?= $city['total']; ?></th>
                                     <td>&ensp;</td>
                                 </tr>
                                 <?php
@@ -135,11 +135,11 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="row-seprater">
-                                <td><?= ($summary_ideology['total']) ? round(((($summary_ideology['present'] + $summary_ideology['leave']) / $summary_ideology['total']) * 100), 2) : '0'; ?>%</td>
-                                <td><?= $summary_ideology['present']; ?></td>
-                                <td><?= $summary_ideology['absent']; ?></td>
-                                <td><?= $summary_ideology['leave']; ?></td>
-                                <td><?= $summary_ideology['total']; ?></td>
+                                <th><?= ($summary_ideology['total']) ? round(((($summary_ideology['present'] + $summary_ideology['leave']) / $summary_ideology['total']) * 100), 2) : '0'; ?>%</th>
+                                <th><?= $summary_ideology['present']; ?></th>
+                                <th><?= $summary_ideology['absent']; ?></th>
+                                <th><?= $summary_ideology['leave']; ?></th>
+                                <th><?= $summary_ideology['total']; ?></th>
                                 <td>&ensp;</td>
                             </tr>
                         <?php endforeach; ?>

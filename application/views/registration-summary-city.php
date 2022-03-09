@@ -51,12 +51,12 @@
                                         </tr>
                                     <?php endforeach; ?>
                                     <tr class="row-seprater">
-                                        <td><?= ($city_summary['total']) ? round(((($city_summary['present'] + $city_summary['half_leave']) / $city_summary['total']) * 100), 2) : '0'; ?>%</td>
-                                        <td><?= $city_summary['total']; ?></td>
-                                        <td><?= $city_summary['present']; ?></td>
-                                        <td><?= $city_summary['full_leave']; ?></td>
-                                        <td><?= $city_summary['absent']; ?></td>
-                                        <td><?= lang('total'); ?></td>
+                                        <th><?= ($city_summary['total']) ? round(((($city_summary['present'] + $city_summary['half_leave']) / $city_summary['total']) * 100), 2) : '0'; ?>%</th>
+                                        <th><?= $city_summary['total']; ?></th>
+                                        <th><?= $city_summary['present']; ?></th>
+                                        <th><?= $city_summary['full_leave']; ?></th>
+                                        <th><?= $city_summary['absent']; ?></th>
+                                        <th><?= lang('total'); ?></th>
                                     </tr>
                                 <?php endforeach; ?>  
                         </tbody>
@@ -138,12 +138,12 @@
                             <?php endforeach; ?>
                             <?php if (count($summary) > 1): ?>
                                 <tr class="row-seprater">
-                                    <td><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / $summary_by_type['total']) * 100), 2) : '0'; ?>%</td>
-                                    <td><?= $summary_by_type['total']; ?></td>
-                                    <td><?= $summary_by_type['present']; ?></td>
-                                    <td><?= $summary_by_type['full_leave']; ?></td>
-                                    <td><?= $summary_by_type['absent']; ?></td>
-                                    <td><?= lang('total'); ?></td>
+                                    <th><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / $summary_by_type['total']) * 100), 2) : '0'; ?>%</th>
+                                    <th><?= $summary_by_type['total']; ?></th>
+                                    <th><?= $summary_by_type['present']; ?></th>
+                                    <th><?= $summary_by_type['full_leave']; ?></th>
+                                    <th><?= $summary_by_type['absent']; ?></th>
+                                    <th><?= lang('total'); ?></th>
                                 </tr>
                             <?php endif; ?>
                         <?php endforeach; ?>

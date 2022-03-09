@@ -79,14 +79,14 @@
                         <?php endforeach; ?>
                         <?php if (count($summary) > 1): ?>
                         <tr class="row-seprater">
-                            <td><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
+                            <th><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
                                 %
-                            </td>
-                            <td><?= $summary_by_type['total']; ?></td>
-                            <td><?= $summary_by_type['present']; ?></td>
-                            <td><?= $summary_by_type['full_leave']; ?></td>
-                            <td><?= $summary_by_type['absent']; ?></td>
-                            <td><?= lang('total'); ?></td>
+                            </th>
+                            <th><?= $summary_by_type['total']; ?></th>
+                            <th><?= $summary_by_type['present']; ?></th>
+                            <th><?= $summary_by_type['full_leave']; ?></th>
+                            <th><?= $summary_by_type['absent']; ?></th>
+                            <th><?= lang('total'); ?></th>
                         </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
@@ -176,26 +176,26 @@
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="row-seprater2">
-                                <td><?= ($zone_summary['total']) ? round(((($zone_summary['present'] + $zone_summary['half_leave']) / ($zone_summary['total'])) * 100), 2) : '0'; ?>
+                                <th><?= ($zone_summary['total']) ? round(((($zone_summary['present'] + $zone_summary['half_leave']) / ($zone_summary['total'])) * 100), 2) : '0'; ?>
                                     %
-                                </td>
-                                <td><?= $zone_summary['total']; ?></td>
-                                <td><?= $zone_summary['present']; ?></td>
-                                <td><?= $zone_summary['full_leave']; ?></td>
-                                <td><?= $zone_summary['absent']; ?></td>
-                                <td><?= lang('total'); ?></td>
+                                </th>
+                                <th><?= $zone_summary['total']; ?></th>
+                                <th><?= $zone_summary['present']; ?></th>
+                                <th><?= $zone_summary['full_leave']; ?></th>
+                                <th><?= $zone_summary['absent']; ?></th>
+                                <th><?= lang('total'); ?></th>
                             </tr>
                         <?php endforeach; ?>
                         <?php if (count($summary) > 1): ?>
                         <tr class="row-seprater">
-                            <td><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
+                            <th><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
                                 %
-                            </td>
-                            <td><?= $summary_by_type['total']; ?></td>
-                            <td><?= $summary_by_type['present']; ?></td>
-                            <td><?= $summary_by_type['full_leave']; ?></td>
-                            <td><?= $summary_by_type['absent']; ?></td>
-                            <td colspan="2"><?= lang('total'); ?></td>
+                            </th>
+                            <th><?= $summary_by_type['total']; ?></th>
+                            <th><?= $summary_by_type['present']; ?></th>
+                            <th><?= $summary_by_type['full_leave']; ?></th>
+                            <th><?= $summary_by_type['absent']; ?></th>
+                            <th colspan="2"><?= lang('total'); ?></th>
                         </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
@@ -281,14 +281,14 @@
                         <?php endforeach; ?>
                         <?php if (count($summary) > 1): ?>
                         <tr class="row-seprater">
-                            <td><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
+                            <th><?= ($summary_by_type['total']) ? round(((($summary_by_type['present'] + $summary_by_type['half_leave']) / ($summary_by_type['total'])) * 100), 2) : '0'; ?>
                                 %
-                            </td>
-                            <td><?= $summary_by_type['total']; ?></td>
-                            <td><?= $summary_by_type['present']; ?></td>
-                            <td><?= $summary_by_type['full_leave']; ?></td>
-                            <td><?= $summary_by_type['absent']; ?></td>
-                            <td><?= lang('total'); ?></td>
+                            </th>
+                            <th><?= $summary_by_type['total']; ?></th>
+                            <th><?= $summary_by_type['present']; ?></th>
+                            <th><?= $summary_by_type['full_leave']; ?></th>
+                            <th><?= $summary_by_type['absent']; ?></th>
+                            <th><?= lang('total'); ?></th>
                         </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>

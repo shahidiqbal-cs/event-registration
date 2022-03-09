@@ -43,8 +43,11 @@
 }
 .printing_tabs table{font-size: 9px;}
 .printing_tabs .table > tbody > tr > td, .printing_tabs .table > tbody > tr > th, .printing_tabs .table > tfoot > tr > td, .printing_tabs .table > tfoot > tr > th, .printing_tabs .table > thead > tr > td, .printing_tabs .table > thead > tr > th{line-height: 0.65 !important;}
-.printing_tabs .row-seprater,.row-seprater{background-color: gray !important; color: #fff;  font-weight: bolder;}
-.printing_tabs .row-seprater,.row-seprater2{background-color: black !important; color: #fff;  font-weight: bolder;}
+.printing_tabs .row-seprater,
+table.table-bordered tfoot tr.row-seprater th,table.table-bordered tbody tr.row-seprater th {
+	border: 2px solid black;
+	font-weight: bolder;
+}
 
 #print_badges .badges td, #print_badges .badges th {
     border: none !important;
