@@ -556,6 +556,7 @@ class Registration extends CI_Controller
             $where = array();
             $where['registration.event_id'] = array($this->event_id);
             $data->badge_header = $this->input->post('badge_header');
+            $data->badge_sub_heading = $this->input->post('badge_sub_heading');
             $data->badge_footer = $this->input->post('badge_footer');
             $data->badge_for = $this->input->post('badge_for');
             $data->custom_ids = $this->input->post('custom_ids');

@@ -17,7 +17,11 @@
                         <table class="table table-hover to-right urdu-direction registration">
                             <tbody>
                             <tr class="text-center">
-                                <th colspan="4"><?= $badge_header; ?></th>
+                                <th colspan="4">
+                                    <?= $badge_header; ?>
+                                    <br>
+                                   <small class="small"><?= $badge_sub_heading; ?></small>
+                                </th>
                             </tr>
                             <tr>
                                 <th colspan="2" class="text-right"><?= $badge->name; ?></th>
@@ -28,7 +32,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2"><?= lang('branch') . ' : ' . $badge->city_name; ?></td>
-                                <td><?= $badge_footer; ?></td>
+                                <td><small><?= $badge_footer; ?></small></td>
                                 <td class="signature"></td>
                             </tr>
                             </tbody>
@@ -56,9 +60,9 @@
         table-layout: fixed;
     }
 
-
     .badges {
         position: relative;
+        -webkit-print-color-adjust: exact;
     }
 
     .badges:before {
@@ -70,10 +74,11 @@
         width: 100%;
         height: 100%;
         opacity: 0.1;
-        background-image: url('/assets/tanzeem-logo.jpeg');
-        background-repeat: no-repeat;
-        background-position: 50% 0;
-        background-size: contain;
+        background-image: url('/assets/tanzeem-logo.jpeg?v=1') !important;
+        background-repeat: no-repeat !important;;
+        background-position: 50% 0 !important;;
+        background-size: contain !important;
+        z-index: 999;
     }
 
     .badge-container {
@@ -82,7 +87,7 @@
 
     .badges .signature {
         width: 100%;
-        background-image: url('<?= base_url('/assets/signature.jpeg'); ?>');
+        content: url('/assets/signature.jpeg?v=1');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

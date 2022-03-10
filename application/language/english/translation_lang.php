@@ -94,3 +94,4 @@ $lang['keep_in_trash'] = 'ٹریش میں رکھیں';
 $lang['move_to_record'] = 'ریکارڈ میں واپس اندراج کریں';
 $lang['comment'] = 'تبصرہ';
 $lang['add_new'] = 'کا اضافہ کریں';
+$lang['receptionist'] = 'استقبالیہ';

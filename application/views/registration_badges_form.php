@@ -1,9 +1,11 @@
 <?php
 $badge_header = '';
-$badge_footer = lang('signature') . ' ' . lang('chairman').': ______________________ ';
+$badge_sub_heading = '';
+$badge_footer = lang('signature') . ' ' . lang('receptionist').':';
 if ($this->input->post()):
     $badge_header = set_value('badge_header');
     $badge_footer = set_value('badge_footer');
+    $badge_sub_heading = set_value('badge_sub_heading');
 endif;
 ?>
 <div class="row">
@@ -25,6 +27,15 @@ endif;
                         </div>
                         <label class="col-sm-12 control-label" for="badge_header"> <i>This content will show on the top of badge (It may be event title)</i></label>
                         <label class="col-sm-offset-2 col-sm-10 control-label" for="badge_header"><?= form_error('badge_header'); ?></label>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="form-group <?= (form_error('badge_sub_heading')) ? 'has-error' : ''; ?>">
+                        <label class="col-sm-2 control-label" for="badge_sub_heading"> Sub Heading</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Badge sub heading" name="badge_sub_heading" class="form-control" value="<?= $badge_sub_heading; ?>" />
+                        </div>
+                        <label class="col-sm-offset-2 col-sm-10 control-label" for="badge_sub_heading"><?= form_error('badge_sub_heading'); ?></label>
                     </div>
                     <hr>
                     <br>
