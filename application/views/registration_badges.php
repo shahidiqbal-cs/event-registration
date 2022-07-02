@@ -24,7 +24,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th colspan="2" class="text-right"><?= $badge->name; ?></th>
+                                <th colspan="2" class="text-right badge-name"><?= $badge->name; ?></th>
                                 <td colspan="2">
                                     <span class="pull-right"><?= $badge->ideology_status; ?></span>
                                     <span class="pull-left reg-number <?= $badge->participant_id < 10 ? 'u-10' : ($badge->participant_id < 99 ? 'u-100' : '') ?>"><?= $badge->participant_id; ?></span>
@@ -106,5 +106,8 @@
         padding: 0.5rem;
     }
 
+    .badge-name {
+        font-size: 3rem;
+    }
 
 </style>
