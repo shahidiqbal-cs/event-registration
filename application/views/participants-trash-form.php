@@ -14,7 +14,7 @@
                     <div class="col-sm-3 pull-right"><?= lang('ideology_status') . ': ' . $participant['ideology_status']; ?></div>
                     <div class="col-sm-3 pull-right"><?= lang('propagation_status') . ': ' . $participant['propagation_status']; ?></div>
                     <div class="col-sm-3 pull-right"><?= lang('majlis_amomi') . ': ' . $participant['majlis_amomi_status']; ?></div>
-                    <div class="col-sm-3 pull-right"><?= lang('branch') . ': ' . $participant['zone_name'] . ' <i class="fa fa-hand-o-left margin-r-5"></i> ' . $participant['city_name'] . ' <i class="fa fa-hand-o-left margin-r-5"></i> ' . $participant['halqa_name']; ?></div>
+                    <div class="col-sm-3 pull-right"><?= lang('branch') . ': ' . $participant['zone_name'] . ' <i class="fa fa-hand-o-left margin-r-5"></i> ' . $participant['city_name']; ?></div>
                 </div>
             </div>
             <hr>

@@ -87,7 +87,7 @@
 
     .badges .signature {
         width: 100%;
-        content: url('/assets/signature.jpeg?v=1');
+        content: url('/assets/signature.jpeg?v=2');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
