@@ -12,7 +12,7 @@ class Migration_Create_initial_schema extends CI_Migration {
         'region', 'zone', 'city', 'halqa',
         'ideology', 'propagation', 'intazami', 'majlis_amomi',
         'event', 'event_title', 'participant', 'registration',
-        'feedback', 'numbers', 'options', 'user',
+        'feedback', 'options', 'user',
     );
 
     public function up()
@@ -142,13 +142,6 @@ class Migration_Create_initial_schema extends CI_Migration {
 				`feedback_dev` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 				PRIMARY KEY (`feedback_id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8",
-
-            "CREATE TABLE `numbers` (
-				`id` int NOT NULL AUTO_INCREMENT,
-				`name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-				`number` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-				PRIMARY KEY (`id`)
-			) ENGINE=InnoDB DEFAULT CHARSET=latin1",
 
             "CREATE TABLE `options` (
 				`option_id` int unsigned NOT NULL AUTO_INCREMENT,

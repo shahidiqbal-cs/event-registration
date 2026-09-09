@@ -145,23 +145,6 @@ $config = array(
             'label' => 'feedback',
             'rules' => 'trim|required'
         )
-    ),
-    'sms' => array(
-        array(
-            'field' => 'tanzeem',
-            'label' => 'Tanzeem',
-            'rules' => 'trim|required'
-        ),
-        array(
-            'field' => 'number',
-            'label' => 'Number',
-            'rules' => 'trim|required'
-        ),
-        array(
-            'field' => 'marge_jaizapass',
-            'label' => 'Marge JaizaPass',
-            'rules' => 'trim|required'
-        )
     )
 );
 ?>
