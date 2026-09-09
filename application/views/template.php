@@ -18,20 +18,13 @@
         <link rel="stylesheet" href="<?= base_url('assets/admin/dist/css/AdminLTE.min.css'); ?>">
         <!-- DataTables -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/datatables/dataTables.bootstrap.css'); ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css'); ?>">
         <link rel="stylesheet" href="<?= base_url('assets/admin/dist/css/buttons.dataTables.min.css'); ?>">
-
-        <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.1.0/css/buttons.dataTables.min.css">-->
         <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/dist/css/skins/_all-skins.min.css'); ?>">
         <!-- iCheck -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/iCheck/flat/blue.css'); ?>">
         <!-- iCheck for checkboxes and radio inputs -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/iCheck/all.css'); ?>">
-        <!-- Morris chart -->
-        <!--<link rel="stylesheet" href="<//?= base_url('assets/admin/plugins/morris/morris.css'); ?>">-->
-        <!-- jvectormap -->
-        <!--<link rel="stylesheet" href="<? //= base_url('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css');   ?>">-->
         <!-- Date Picker -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/datepicker/datepicker3.css'); ?>">
         <!-- Daterange picker -->
@@ -126,20 +119,9 @@
         </script>
         <!-- Bootstrap 3.3.5 -->
         <script src="<?= base_url('assets/admin/bootstrap/js/bootstrap.min.js'); ?>"></script>
-        <!-- Morris.js charts -->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
-        <script src="<?= base_url('assets/admin/live/js/raphael-min.js') ?>"></script>
-        <!--<script src="<//?= base_url('assets/admin/plugins/morris/morris.min.js'); ?>"></script>-->
         <!-- Sparkline -->
         <script src="<?= base_url('assets/admin/plugins/sparkline/jquery.sparkline.min.js'); ?>"></script>
-        <!-- jvectormap
-        <script src="<//?= base_url('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'); ?>"></script>
-        <script src="<//?= base_url('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'); ?>"></script>
-        -->
-        <!-- jQuery Knob Chart -->
-        <!--<script src="<//?= base_url('assets/admin/plugins/knob/jquery.knob.js') ?>"></script>-->
         <!-- daterangepicker -->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>-->
         <script src="<?= base_url('assets/admin/live/js/moment.min.js') ?>"></script>
         <script src="<?= base_url('assets/admin/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
         <!-- datepicker -->
@@ -160,10 +142,6 @@
         <!-- DataTables -->
         <script src="<?= base_url('assets/admin/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
         <script src="<?= base_url('assets/admin/plugins/datatables/dataTables.bootstrap.min.js'); ?>"></script>
-        <script src="<?= base_url('assets/admin/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js'); ?>"></script>
-
-        <!--<script src="https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min.js"></script>-->
-<!--        <script src="//cdn.datatables.net/buttons/1.1.0/js/buttons.print.min.js"></script>-->
         <script type="text/javascript" src="<?= base_url('assets/admin/plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js'); ?>"></script>
         <script type="text/javascript" src="<?= base_url('assets/admin/dist/js/buttons.print.min.js'); ?>"></script>
 
