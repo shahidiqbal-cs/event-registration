@@ -137,7 +137,11 @@ switch (ENVIRONMENT)
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
  */
-	$system_path = 'system';
+	// The CodeIgniter framework is installed with Composer.
+	// Falls back to a local ./system directory if one is present.
+	$system_path = is_dir(__DIR__.'/vendor/codeigniter/framework/system')
+		? 'vendor/codeigniter/framework/system'
+		: 'system';
 
 /*
  *---------------------------------------------------------------
