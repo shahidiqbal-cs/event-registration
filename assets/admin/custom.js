@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     //jQuery('#data_table').DataTable();
     jQuery('.datePicker').datepicker({format: 'yyyy-mm-dd'});
     if (typeof site_base_url === 'undefined') {
-        site_base_url = 'http://localhost/tfw';
+        site_base_url = 'http://localhost';
     }
     if (jQuery('#print_page_header_message').length) {
         message_in_print_header = document.getElementById('print_page_header_message').innerHTML;
@@ -171,7 +171,7 @@ jQuery(document).ready(function () {
         message.html('<i class="icon fa fa-info"></i> Please Wait. Creating attendance sheet.');
         jQuery.ajax({
             type: 'post',
-            url: site_base_url + 'tfw/create_attendance_sheet',
+            url: site_base_url + 'create_attendance_sheet',
             cache: false,
             data: {
                 event_id: event_id,

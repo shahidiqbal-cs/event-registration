@@ -286,7 +286,7 @@ class Participant extends CI_Controller
 
     function create_excel_file($data, $heading, $no_of_column, $file_name, $active_sheet_index = 0, $rtl_direction = true)
     {
-        $creator_name = 'tfw';
+        $creator_name = 'eventManager';
         /*
          * ************************ Header Setting *************************
          */
