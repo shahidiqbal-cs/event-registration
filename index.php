@@ -38,6 +38,44 @@
 
 /*
  *---------------------------------------------------------------
+ * LOAD ENVIRONMENT FILE (.env)
+ *---------------------------------------------------------------
+ *
+ * Secrets (DB credentials, keys) live in a .env file that is NOT
+ * committed to source control. Keys already present in the real
+ * environment are never overwritten. See .env.example for the format.
+ */
+	$dotenv = __DIR__.DIRECTORY_SEPARATOR.'.env';
+	if (is_file($dotenv) && is_readable($dotenv))
+	{
+		foreach (file($dotenv, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line)
+		{
+			$line = trim($line);
+			if ($line === '' || $line[0] === '#' || strpos($line, '=') === FALSE)
+			{
+				continue;
+			}
+			list($key, $value) = explode('=', $line, 2);
+			$key = trim($key);
+			$value = trim($value);
+			if ((isset($value[1]) && $value[0] === '"' && substr($value, -1) === '"')
+				|| (isset($value[1]) && $value[0] === "'" && substr($value, -1) === "'"))
+			{
+				$value = substr($value, 1, -1);
+			}
+			if ($key !== '' && getenv($key) === FALSE)
+			{
+				putenv($key.'='.$value);
+				$_ENV[$key] = $value;
+				$_SERVER[$key] = $value;
+			}
+		}
+		unset($line, $key, $value);
+	}
+	unset($dotenv);
+
+/*
+ *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
  *---------------------------------------------------------------
  *
@@ -53,7 +91,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : (getenv('CI_ENV') ?: 'development'));
 
 /*
  *---------------------------------------------------------------
@@ -66,7 +104,9 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		// PHPExcel and other legacy libs trigger deprecation notices on PHP 7.4+.
+		// Keep every other error visible during development.
+		error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 		ini_set('display_errors', 1);
 	break;
 
