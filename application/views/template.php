@@ -14,16 +14,6 @@
         <!-- Ionicons -->
         <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
         <link rel="stylesheet" href="<?= base_url('assets/admin/ionicons/css/ionicons.min.css'); ?>">
-        <!-- Grocery CRUD CSS Files -->
-        <?php
-        if (isset($css_files)):
-            foreach ($css_files as $file):
-                ?>
-                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-                <?php
-            endforeach;
-        endif;
-        ?>
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/dist/css/AdminLTE.min.css'); ?>">
         <!-- DataTables -->
@@ -49,7 +39,6 @@
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="<?= base_url('assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>">
         <script type="text/javascript">
-            var default_texteditor_path = '<?= base_url('assets/grocery_crud/texteditor'); ?>';
             var site_base_url = '<?= base_url(); ?>';
         </script>
 
@@ -132,17 +121,6 @@
         <!-- jQuery UI 1.11.4 -->
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <!-- Grocery CRUD JS Files -->
-        <?php
-        if (isset($js_files)):
-            foreach ($js_files as $file):
-                ?>
-                <script src="<?php echo $file; ?>"></script>
-                <?php
-            endforeach;
-        endif;
-        ?>
-<!--<script type="text/javascript" src="<//?= base_url('assets/js/jquery.printElement.min.js'); ?>"></script>-->
         <script>
 //            $.widget.bridge('uibutton', $.ui.button);
         </script>

@@ -127,4 +127,4 @@ $autoload['language'] = array('translation');
   |
   |	$autoload['model'] = array('first_model' => 'first');
  */
-$autoload['model'] = array('tfw_model', 'ideology_model', 'organization_model', 'participant_model');
+$autoload['model'] = array('ideology_model', 'organization_model', 'participant_model');

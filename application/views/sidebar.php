@@ -9,7 +9,7 @@ endif;
 <section class="sidebar">
     <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="<?= ($current_method === 'index' && $current_class === 'tfw') ? 'active' : ''; ?>">
+        <li class="<?= ($current_method === 'index' && $current_class === 'dashboard') ? 'active' : ''; ?>">
             <a href="<?= site_url(); ?>">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>

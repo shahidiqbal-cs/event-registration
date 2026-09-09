@@ -1,10 +1,3 @@
-<?php
-//$action_url = site_url('tfw/participant_new');
-//if ($participant_id):
-//    $action_url = site_url('tfw/participant_action/edit/' . $participant_id);
-//endif;
-?>
-<!--<form id="participant_form" class="form-horizontal" method="post" action="<? //= $action_url;        ?>">-->
 <form id="participant_form" class="form-horizontal" method="post" action="">
     <div class="box box-primary">
         <div class="box-header with-border">

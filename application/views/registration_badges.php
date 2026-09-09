@@ -79,7 +79,7 @@
     width: 100%;
     height: 100%;
     opacity: 0.1;
-    background-image: url('/assets/tanzeem-logo.jpeg') !important;
+    background-image: url('/assets/logo.jpg') !important;
     background-repeat: no-repeat !important;;
     background-position: 50% 0 !important;;
     background-size: contain !important;
