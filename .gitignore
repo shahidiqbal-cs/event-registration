@@ -3,6 +3,10 @@
 # Local environment secrets
 .env
 
+# Runtime uploads - keep the directory, ignore whatever gets uploaded
+/assets/files/*
+!/assets/files/index.html
+
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess

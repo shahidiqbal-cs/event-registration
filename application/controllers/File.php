@@ -37,7 +37,13 @@ class File extends CI_Controller {
     private function get_files_data() {
         $files_with_details = array();
         $files = directory_map($this->files_location);
+        if (!is_array($files)):
+            return $files_with_details;
+        endif;
         foreach ($files as $file):
+            if ($file === 'index.html' || $file[0] === '.'):
+                continue;
+            endif;
             $file_path = $this->files_location . '/' . $file;
             $fileinfo = get_file_info($file_path);
             $fileinfo['ext'] = pathinfo($file_path, PATHINFO_EXTENSION);
